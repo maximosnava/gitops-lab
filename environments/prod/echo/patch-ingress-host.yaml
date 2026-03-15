@@ -1,7 +1,3 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: echo
-spec:
-  rules:
-    - host: echo-prod.local
+- op: replace
+  path: /spec/rules/0/host
+  value: echo-prod.local

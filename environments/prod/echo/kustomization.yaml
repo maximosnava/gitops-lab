@@ -8,5 +8,10 @@ resources:
 
 patches:
   - path: patch-replicas.yaml
-  - path: patch-ingress-host.yaml
   - path: patch-resources.yaml
+  - target:
+      group: networking.k8s.io
+      version: v1
+      kind: Ingress
+      name: echo
+    path: patch-ingress-host.yaml
