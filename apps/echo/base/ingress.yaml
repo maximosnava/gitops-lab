@@ -4,6 +4,7 @@ metadata:
   name: echo
   annotations:
     kubernetes.io/ingress.class: nginx
+    lab.example/service-name: PLACEHOLDER
 spec:
   ingressClassName: nginx
   rules:

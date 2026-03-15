@@ -6,6 +6,24 @@ namespace: dev
 resources:
   - ../../../apps/echo/base
 
+images:
+  - name: ealen/echo-server
+    newTag: "latest"
+
+labels:
+  - pairs:
+      app.kubernetes.io/name: echo
+      app.kubernetes.io/part-of: gitops-lab
+      app.kubernetes.io/managed-by: kustomize
+      environment: dev
+    includeSelectors: false
+
+configMapGenerator:
+  - name: echo-config
+    literals:
+      - APP_ENV=dev
+      - LOG_LEVEL=debug
+
 patches:
   - path: patch-replicas.yaml
   - path: patch-resources.yaml
@@ -15,3 +33,15 @@ patches:
       kind: Ingress
       name: echo
     path: patch-ingress-host.yaml
+
+replacements:
+  - source:
+      kind: Ingress
+      name: echo
+      fieldPath: spec.rules.0.host
+    targets:
+      - select:
+          kind: Deployment
+          name: echo
+        fieldPaths:
+          - spec.template.spec.containers.0.env.0.value

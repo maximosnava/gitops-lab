@@ -20,6 +20,12 @@ spec:
           ports:
             - containerPort: 80
               name: http
+          env:
+            - name: PUBLIC_HOST
+              value: PLACEHOLDER
+          envFrom:
+            - configMapRef:
+                name: echo-config
           resources:
             requests:
               cpu: "100m"
