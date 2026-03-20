@@ -1,0 +1,3 @@
+file_name = "salida-lab-test.txt"
+message = "Nuevo contenido desde Terraform"
+environment = "test"
