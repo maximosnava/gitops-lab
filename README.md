@@ -1,29 +1,44 @@
 # gitops-lab
 
-Repositorio GitOps del laboratorio DevOps.
+GitOps repository for the DevOps lab.
 
-## Objetivo
-Gestionar manifests Kubernetes usando Git como fuente de verdad, con una estructura compatible con Kustomize y pensada para Argo CD.
+## Objective
+Manage Kubernetes manifests using Git as the source of truth, with a Kustomize-compatible structure designed for Argo CD.
 
-## Estructura
+## Structure
 
-- `apps/`: bases reutilizables de aplicaciones
-- `environments/`: overlays por ambiente
-- `platform/`: componentes compartidos de plataforma (a futuro)
+- `apps/`: reusable application bases
+- `environments/`: environment-specific overlays
+- `platform/`: shared platform components (for future use)
 
-## Aplicaciones actuales
+## Current applications
 
 ### echo
 Base:
 - `apps/echo/base`
 
-Ambientes:
+Environments:
 - `environments/dev/echo`
 - `environments/prod/echo`
 
-## Validación
+## Validation
 
-Renderizar manifests de dev:
+Render dev manifests:
 
 ```bash
 kubectl kustomize environments/dev/echo
+
+## ArgoCD
+
+Covered:
+- ArgoCD install
+- Application resources
+- sync and health states
+- automated sync
+- self-heal
+- private repository integration with GitHub PAT
+
+Relevant paths:
+- platform/argocd/install/
+- platform/argocd/applications/
+- environments/dev/echo/
