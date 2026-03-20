@@ -23,6 +23,7 @@ configMapGenerator:
     literals:
       - APP_ENV=dev
       - LOG_LEVEL=debug
+      - APP_DEPLOY= argocd
 
 patches:
   - path: patch-replicas.yaml
