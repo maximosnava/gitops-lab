@@ -27,7 +27,7 @@ Render dev manifests:
 
 ```bash
 kubectl kustomize environments/dev/echo
-
+```
 ## ArgoCD
 
 Covered:
